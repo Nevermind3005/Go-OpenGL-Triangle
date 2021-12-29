@@ -99,7 +99,7 @@ func main() {
 
 	checkIfProgramLinked(shaderProgram)
 
-	//Deleting program
+	//Deleting shaders
 	gl.DeleteShader(vertexShader)
 	gl.DeleteShader(fragmentShader)
 
@@ -121,7 +121,7 @@ func main() {
 	gl.BindBuffer(gl.ARRAY_BUFFER, VBO)
 	gl.BufferData(gl.ARRAY_BUFFER, len(vertices)*4, gl.Ptr(vertices), gl.STATIC_DRAW)
 
-	gl.VertexAttribPointer(0, 3, gl.FLOAT, false, 3*4, gl.PtrOffset(0))
+	gl.VertexAttribPointerWithOffset(0, 3, gl.FLOAT, false, 3*4, 0)
 	gl.EnableVertexAttribArray(0)
 
 	gl.BindVertexArray(0)
