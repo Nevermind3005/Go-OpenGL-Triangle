@@ -72,14 +72,14 @@ func main() {
 
 	//Compiling vertex shader
 	vertexShader := gl.CreateShader(gl.VERTEX_SHADER)
-	vertexShaderSourceChar, freeVertexShaderFn := gl.Strs(vertexShaderSource)
+	vertexShaderSourceChar, freeVertexShaderFn := gl.Strs(vertexShaderSource + "\x00")
 	gl.ShaderSource(vertexShader, 1, vertexShaderSourceChar, nil)
 	gl.CompileShader(vertexShader)
 	checkIfShaderCompiled(vertexShader)
 
 	//Compiling fragment shader
 	fragmentShader := gl.CreateShader(gl.FRAGMENT_SHADER)
-	fragmentShaderSourceChar, freeFragmentShaderFn := gl.Strs(fragmentShaderSource)
+	fragmentShaderSourceChar, freeFragmentShaderFn := gl.Strs(fragmentShaderSource + "\x00")
 	gl.ShaderSource(fragmentShader, 1, fragmentShaderSourceChar, nil)
 	gl.CompileShader(fragmentShader)
 	checkIfShaderCompiled(fragmentShader)
